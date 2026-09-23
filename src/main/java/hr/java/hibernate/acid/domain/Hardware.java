@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hardware {
+    private Integer id;
     private String naziv;
     private String sifra;
     private double cijena;
