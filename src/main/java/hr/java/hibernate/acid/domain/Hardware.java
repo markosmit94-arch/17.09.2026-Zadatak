@@ -12,6 +12,6 @@ public class Hardware {
     private String naziv;
     private String sifra;
     private double cijena;
-    private String tip;
+    private Tip tip;
     private int kolicina;
 }

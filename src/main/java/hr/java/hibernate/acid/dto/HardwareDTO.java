@@ -1,5 +1,6 @@
 package hr.java.hibernate.acid.dto;
 
+import hr.java.hibernate.acid.domain.Tip;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;

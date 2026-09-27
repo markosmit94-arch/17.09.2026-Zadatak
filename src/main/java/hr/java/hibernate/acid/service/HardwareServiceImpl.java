@@ -1,8 +1,10 @@
 package hr.java.hibernate.acid.service;
 
 import hr.java.hibernate.acid.domain.Hardware;
+import hr.java.hibernate.acid.domain.Tip;
 import hr.java.hibernate.acid.dto.HardwareDTO;
 import hr.java.hibernate.acid.repository.HardwareRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class HardwareServiceImpl  implements HardwareService {
 
     private HardwareRepository hardwareRepository;
@@ -58,12 +61,6 @@ public class HardwareServiceImpl  implements HardwareService {
         return hardwareRepository.deleteHardwareById(id);
     }
 
-    private HardwareDTO convertHardwareToHardwareDTO(Hardware hardware) {
-        return new HardwareDTO(hardware.getSifra(),
-                hardware.getNaziv(), hardware.getCijena(),
-                hardware.getTip(), hardware.getKolicina());
-    }
-
     private Hardware convertHardwareDTOToHardware(HardwareDTO hardwareDTO) {
         Integer latestId =
                 hardwareRepository.getAllHardware().stream()
@@ -72,7 +69,16 @@ public class HardwareServiceImpl  implements HardwareService {
 
         return new Hardware(latestId + 1, hardwareDTO.getHardwareNaziv(),
                 hardwareDTO.getHardwareSifra(), hardwareDTO.getHardwareCijena(),
-                hardwareDTO.getCategoryTip(), hardwareDTO.getHardwareKolicina());
+                Tip.valueOf(hardwareDTO.getCategoryTip()), hardwareDTO.getHardwareKolicina());
+    }
+
+    private HardwareDTO convertHardwareToHardwareDTO(Hardware hardware) {
+        return new HardwareDTO(
+                hardware.getSifra(),
+                hardware.getNaziv(),
+                hardware.getCijena(),
+                hardware.getTip().getName(),
+                hardware.getKolicina());
     }
 
 }
