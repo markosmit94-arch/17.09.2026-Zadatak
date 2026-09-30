@@ -1,6 +1,7 @@
 package hr.java.hibernate.acid.repository;
 
 import hr.java.hibernate.acid.domain.Hardware;
+import hr.java.hibernate.acid.domain.Tip;
 import hr.java.hibernate.acid.domain.Type;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
@@ -95,7 +96,7 @@ public class JdbcHardwareRepository implements HardwareRepository {
             newHardware.setNaziv(rs.getString("NAZIV"));
             newHardware.setSifra(rs.getString("SIFRA"));
             newHardware.setCijena(rs.getDouble("CIJENA"));
-            newHardware.setType(Type.fromId(rs.getInt("TIPID")));
+            newHardware.setType(Tip.fromId(rs.getInt("TIPID")));
             newHardware.setKolicina(rs.getInt("KOLICINA"));
             return newHardware;
         }

@@ -1,6 +1,7 @@
 package hr.java.hibernate.acid.repository;
 
 import hr.java.hibernate.acid.domain.Hardware;
+import hr.java.hibernate.acid.domain.Tip;
 import hr.java.hibernate.acid.domain.Type;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +18,9 @@ public class MockHardwareRepository implements HardwareRepository {
     static {
         hardwareList = new ArrayList<>();
 
-        Hardware h1 = new Hardware(1,"Silicon Power", "FJH6K67D", 23.45, Type.RAM, 7);
-        Hardware h2 = new Hardware(2,"Intel Core i3", "12100F", 124.99, Type.CPU, 9);
-        Hardware h3 = new Hardware(3,"Kingston A400", "GFJ49DFJG", 611.35, Type.SSD, 11);
+        Hardware h1 = new Hardware(1,"Silicon Power", "FJH6K67D", 23.45, Tip.RAM, 7);
+        Hardware h2 = new Hardware(2,"Intel Core i3", "12100F", 124.99, Tip.CPU, 9);
+        Hardware h3 = new Hardware(3,"Kingston A400", "GFJ49DFJG", 611.35, Tip.SSD, 11);
 
         hardwareList.add(h1);
         hardwareList.add(h2);
